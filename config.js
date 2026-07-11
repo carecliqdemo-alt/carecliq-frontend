@@ -7,7 +7,7 @@ window.CARECLIQ_CONFIG = {
     window.location.hostname ===
     "127.0.0.1"
 
-      ? "https://carecliq-redesign.onrender.com"
+      ? "https://carecliq.onrender.com"
 
       : "https://YOUR-RENDER-SERVICE.onrender.com"
 

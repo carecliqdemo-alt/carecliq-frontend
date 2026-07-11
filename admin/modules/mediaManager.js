@@ -208,7 +208,7 @@ wrapper.querySelector(
             url.startsWith("/uploads/")
         ) {
 
-            return `https://carecliq-redesign.onrender.com${url}`;
+            return `https://carecliq.onrender.com${url}`;
 
         }
 

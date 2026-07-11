@@ -2,7 +2,7 @@ const CMS_API =
 `${window.CARECLIQ_CONFIG.API_BASE}/api/content`;
 
 const BACKEND_URL =
-  "https://carecliq-redesign.onrender.com";
+  "https://carecliq.onrender.com";
 
 
 function resolveMediaUrl(url) {

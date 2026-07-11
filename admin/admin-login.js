@@ -1,5 +1,5 @@
 const AUTH_API =
-  "https://carecliq-redesign.onrender.com/api/admin-auth/login";
+  "https://carecliq.onrender.com/api/admin-auth/login";
 
 console.log(
   "Admin endpoint loaded:",

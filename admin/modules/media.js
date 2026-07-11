@@ -21,7 +21,7 @@ function loadMedia() {
 
       const previewUrl =
         item.url.startsWith("/uploads/")
-          ? `https://carecliq-redesign.onrender.com${item.url}`
+          ? `https://carecliq.onrender.com${item.url}`
           : item.url;
 
 
@@ -207,7 +207,7 @@ async function saveMediaLibrary() {
 
   const response =
     await fetch(
-      "https://carecliq-redesign.onrender.com/api/content",
+      "https://carecliq.onrender.com/api/content",
       {
         method: "POST",
 

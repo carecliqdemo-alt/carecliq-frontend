@@ -1,4 +1,4 @@
-const API_BASE = "https://carecliq-redesign.onrender.com";
+const API_BASE = "https://carecliq.onrender.com";
 
 
 async function authRequest(endpoint, data){

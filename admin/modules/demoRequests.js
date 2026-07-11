@@ -1,5 +1,5 @@
 const DEMO_REQUESTS_API =
-"https://carecliq-redesign.onrender.com/api/demo-requests";
+"https://carecliq.onrender.com/api/demo-requests";
 
 
 function escapeDemoHTML(value){
