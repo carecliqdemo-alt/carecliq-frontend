@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareCliQ </title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="./frontend/css/login.css" />
+
+  <script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui'],
+        heading: ['Plus Jakarta Sans', 'Inter', 'system-ui'],
+      }
+    }
+  }
+}
+</script>
+</head>
+
+<body class="bg-[#FDF6EE] text-[#1F1F1F] font-sans">
+
+<!-- Navigation -->
+<header class="carecliq-master-header">
+  <div class="header-container">
+    
+<a
+    href="#"
+    id="headerLogo"
+    class="header-logo"
+    aria-label="CareCliQ Home"
+>
+    <img
+        src="./images/logo2.png"
+        alt="CareCliQ Logo"
+        class="header-logo-img"
+    >
+</a>
+    <!-- Mobile Menu Hamburger Button Toggle Trigger -->
+    <button class="mobile-menu-trigger" aria-label="Toggle Navigation Menu" aria-expanded="false" id="menuTrigger">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <!-- Navigation Runway Center & Actions Right -->
+    <nav class="header-navigation-wrapper" id="headerNav">
+      <div class="nav-links-center">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#languages">Languages</a>
+        <a href="#contact">Contact</a>
+      </div>
+      
+      <div class="nav-actions-right">
+
+<div
+  id="userMenu"
+  class="user-menu"
+>
+
+ <a
+  href="./login.html"
+  class="btn-login-link"
+  id="openLoginModal"
+>
+  Login
+</a>
+
+  <div
+    id="loggedInMenu"
+    class="logged-in-menu"
+    hidden
+  >
+
+    <button
+      type="button"
+      id="userMenuButton"
+      class="user-menu-button"
+    >
+      👤
+      <span id="userDisplayName">
+        User
+      </span>
+    </button>
+
+    <div
+      id="userDropdown"
+      class="user-dropdown"
+    >
+
+      <a href="book-demo.html">
+        Book Demo
+      </a>
+
+      <button
+        type="button"
+        id="logoutBtn"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+  <a href="book-demo.html" class="btn-action-pill">
+    Book Demo
+  </a>
+
+</div>
+    </nav>
+
+  </div>
+</header>
+
+  <!-- HERO -->
+<section id="top" class="min-h-screen flex flex-col lg:flex-row items-center justify-between gap-12 px-6 md:px-10 lg:px-16 pt-28 max-w-7xl mx-auto">
+
+  <!-- TEXT -->
+  <div class="w-full lg:w-1/2 space-y-8 text-center lg:text-left reveal">
+   <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-7xl font-heading font-bold leading-tight">
+  Documentation shouldn’t take longer than care.
+</h1>
+    <p id="hero-subtitle" class="text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 leading-7">
+      CareCliQ helps support workers turn everyday care conversations into clear documentation, so they can spend less time on paperwork and more time with people.
+    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+
+  <a
+    id="hero-primary-btn"
+    href="./book-demo.html"
+    class="bg-[#D95E95] text-white px-8 py-4 rounded-full hover:scale-105 transition text-center"
+  >
+    Book a Demo
+  </a>
+
+  <button
+    id="hero-secondary-btn"
+    type="button"
+    data-media-type="video"
+    data-media-src="./videos/carecliq-demo.mp4"
+    data-media-title="CareCliQ Demo"
+    class="border border-gray-300 bg-white px-8 py-4 rounded-full hover:bg-gray-50 transition"
+  >
+    Watch Video
+  </button>
+
+</div>
+  </div>
+
+  <!-- VIDEO HERO WITH OVERLAPPING GRIP -->
+  <div class="w-full lg:w-1/2 flex justify-center reveal-scale relative">
+    
+    <!-- Outer wrapper container ALLOWS overflow so hand doesn't clip -->
+    <div class="relative w-full max-w-md md:max-w-lg lg:max-w-xl h-[320px] md:h-[450px] lg:h-[650px] group">
+
+      <!-- INNER MASK HOUSES VIDEO & EFFECTS SAFELY -->
+      <div class="absolute inset-0 overflow-hidden rounded-3xl shadow-2xl">
+        <!-- VIDEO -->
+        <video id="hero-video" autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+          <source src="videos/carecliq-demo.mp4" type="video/mp4">
+        </video>
+        
+        <!-- DARK SOFT OVERLAY -->
+        <div class="absolute inset-0 bg-black/20"></div>
+
+        <!-- FLOATING INTERACTIVE BUTTONS -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+  href="./login.html?view=register"
+  class="bg-[#D95E95] text-white px-8 py-4 rounded-full shadow-xl backdrop-blur-md hover:-translate-y-1 transition duration-300 text-center"
+>
+  Start Free Trial
+</a>
+
+<button
+  type="button"
+  data-media-type="video"
+  data-media-src="./videos/carecliq-demo.mp4"
+  data-media-title="CareCliQ Demo"
+  class="bg-white/90 text-gray-900 px-8 py-4 rounded-full shadow-xl hover:-translate-y-1 transition duration-300"
+>
+  ▶ Watch Demo
+</button>
+          </div>
+        </div>
+
+        <!-- FLOATING STATUS CARD -->
+        <div class="absolute top-6 left-6 bg-white/90 backdrop-blur-md rounded-2xl px-5 py-4 shadow-xl">
+          <p class="text-xs text-gray-500">AI Documentation Assistant</p>
+          <p class="font-semibold text-sm">Recording → Notes Generated</p>
+        </div>
+
+        <!-- FLOATING TRUST CARD -->
+        <div class="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md rounded-2xl px-5 py-4 shadow-xl">
+          <p class="text-xs text-gray-500">Care Documentation</p>
+          <p class="font-semibold text-sm">✓ Completed in seconds</p>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+</section>
+
+  <section class="story-video-hero">
+  <!-- Background Video Element -->
+  <!-- playsinline, autoplay, muted, loop ensure it auto-plays instantly across all mobile browsers -->
+ <video class="story-bg-video" src="./videos/our-story.mp4" playsinline autoplay muted loop></video>
+
+  
+  <!-- Deep Tint Overlay for Contrast Control -->
+  <div class="story-video-overlay"></div>
+
+  <!-- Foreground Content (Constrained Width for Clean Stacking) -->
+  <div class="story-content-box reveal">
+    <p class="story-tag">Our Story</p>
+    <h2 class="story-heading">We built CareCliQ because admin shouldn't get in the way of <span>care.</span></h2>
+    
+    <div class="story-paragraphs">
+      <p>CareCliQ was founded in South Australia by a team who saw firsthand how much time NDIS support workers and coordinators lose to paperwork — especially workers whose first language isn't English. We built the tool we wished existed.</p>
+      <p>Every feature in CareCliQ was shaped by real conversations with support workers, coordinators, and business owners across the sector. This isn't a tech product designed in a vacuum — it's built for the people doing the work.</p>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section px-6 md:px-10 lg:px-16 py-16 md:py-24">
+
+  <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+
+    <div class="stat-item">
+
+      <h3 class="text-5xl md:text-6xl font-bold text-[#292524]">
+        10–20 hrs
+      </h3>
+
+      <p class="mt-5 text-gray-600 leading-7 max-w-xs mx-auto">
+        Weekly time spent on documentation outside of direct care work.
+      </p>
+
+    </div>
+
+    <div class="stat-item">
+
+      <h3 class="text-5xl md:text-6xl font-bold text-[#D95E95]">
+        NDIS
+      </h3>
+
+      <p class="mt-5 text-gray-600 leading-7 max-w-xs mx-auto">
+        Built around documentation workflows used by Australian disability providers.
+      </p>
+
+    </div>
+
+    <div class="stat-item">
+
+      <h3 class="text-5xl md:text-6xl font-bold text-[#3B82F6]">
+        40+
+      </h3>
+
+      <p class="mt-5 text-gray-600 leading-7 max-w-xs mx-auto">
+        Languages supported for multilingual care teams and participants.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="features" class="features-section">
+  <!-- Section Title Wrapper -->
+  <div class="section-header reveal">
+    <p class="section-tag">What CareCliQ Does</p>
+    <h2 class="section-title">Everything your team needs to stay compliant.</h2>
+    <p class="section-subtitle">Purpose-built tools that save real time — for workers writing notes and coordinators managing teams.</p>
+  </div>
+
+  <!-- Cards Container Layout -->
+  <div class="cards-grid">
+    
+    <!-- Feature Card 1: Languages -->
+    <div class="feature-card reveal-card">
+      <div class="card-info">
+        <div class="icon-badge icon-pink">
+          <!-- Globe SVG Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </div>
+        <h3 class="card-heading">Write in any language. Comply in English.</h3>
+        <p class="card-description">Workers speak or type in Hindi, Tagalog, Nepali, Arabic, Swahili, Mandarin, or 7 other languages. CareCliQ reformats their words into a fully compliant NDIS progress note in under 30 seconds — automatically, in one step.</p>
+        <span class="badge badge-pink">10+ Languages</span>
+      </div>
+      <div class="card-video-frame">
+        <video src="./videos/your-feature-video-1.mp4" playsinline autoplay muted loop></video>
+      </div>
+    </div>
+
+    <!-- Feature Card 2: Compliance Score -->
+    <div class="feature-card reveal-card">
+      <div class="card-info">
+        <div class="icon-badge icon-green">
+          <!-- Checkmark SVG Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h3 class="card-heading">Know your team's compliance score in real time.</h3>
+        <p class="card-description">Every note is checked against 12 NDIS documentation rules before it can be saved — goals referenced, objective language, 48-hour deadline, restrictive practice detection. Workers see their own score. You see it across your whole team without reading a single note.</p>
+        <span class="badge badge-pink">12 NDIS Rules</span>
+      </div>
+      <div class="card-video-frame">
+        <video src="./videos/your-feature-video-2.mp4" playsinline autoplay muted loop></video>
+      </div>
+    </div>
+
+    <!-- Feature Card 3: Credentials & Expiries (New) -->
+    <div class="feature-card reveal-card">
+      <div class="card-info">
+        <div class="icon-badge icon-pink">
+          <!-- ID / Credential Shield SVG Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <h3 class="card-heading">Every credential. Every expiry. One place.</h3>
+        <p class="card-description">Workers store their NDIS Worker Screening, First Aid, Police Check, and CPR certificates in their CareCliQ credential wallet. You see expiry dates across your whole team and get alerts 30 days before anything runs out — before the Commission asks.</p>
+        <span class="badge badge-pink">Auto Expiry Alerts</span>
+      </div>
+      <div class="card-video-frame">
+        <video src="./videos/your-feature-video-3.mp4" playsinline autoplay muted loop></video>
+      </div>
+    </div>
+
+    <!-- Feature Card 4: Audit Reports (New) -->
+    <div class="feature-card reveal-card">
+      <div class="card-info">
+        <div class="icon-badge icon-blue">
+          <!-- Clipboard / Document SVG Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        </div>
+        <h3 class="card-heading">Audit-ready before the auditor calls.</h3>
+        <p class="card-description">Export a complete audit pack for any participant with one click — every note, every credential, every compliance score, time-stamped and formatted to NDIS Commission standards. No scrambling. No gaps.</p>
+        <span class="badge badge-pink">1-Click Export</span>
+      </div>
+      <div class="card-video-frame">
+        <video src="./videos/your-feature-video-4.mp4" playsinline autoplay muted loop></video>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="how-it-works" class="process-section">
+  <!-- Section Title Wrapper -->
+  <div  class="process-header">
+    <p class="process-tag">Simple by Design</p>
+    <h2 class="process-title">How CareCliQ works</h2>
+  </div>
+
+  <!-- Stacking Cards Track Container -->
+  <div class="steps-stack-track">
+    
+    <!-- Step 01 Card -->
+    <div class="step-card-wrapper">
+      <div class="step-card-inner">
+        <!-- Content Block -->
+        <div class="step-card-content">
+          <div class="step-number">01</div>
+          <div class="step-text">
+            <h3 class="step-heading">Workers log in on any device</h3>
+            <p class="step-description">CareCliQ works on phones, tablets, and desktops — in the home, on the road, or in the office. No installation needed.</p>
+          </div>
+        </div>
+        <!-- Video Showcase block for this specific step -->
+        <div class="step-card-video">
+          <video src="./videos/your-step-1-video.mp4" playsinline autoplay muted loop></video>
+          <div class="video-accent-glow"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 02 Card -->
+    <div class="step-card-wrapper">
+      <div class="step-card-inner">
+        <!-- Content Block -->
+        <div class="step-card-content">
+          <div class="step-number">02</div>
+          <div class="step-text">
+            <h3 class="step-heading">Speak or type in any language</h3>
+            <p class="step-description">Workers record their session notes in their first language — voice or text. CareCliQ handles the rest.</p>
+          </div>
+        </div>
+        <!-- Video Showcase block for this specific step -->
+        <div class="step-card-video">
+          <video src="./videos/your-step-2-video.mp4" playsinline autoplay muted loop></video>
+          <div class="video-accent-glow"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 03 Card -->
+    <div class="step-card-wrapper">
+      <div class="step-card-inner">
+        <!-- Content Block -->
+        <div class="step-card-content">
+          <div class="step-number">03</div>
+          <div class="step-text">
+            <h3 class="step-heading">A compliant note is generated instantly</h3>
+            <p class="step-description">The note is translated, reformatted, and checked against 12 NDIS rules — all before the worker hits save.</p>
+          </div>
+        </div>
+        <!-- Video Showcase block for this specific step -->
+        <div class="step-card-video">
+          <video src="./videos/your-step-3-video.mp4" playsinline autoplay muted loop></video>
+          <div class="video-accent-glow"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 04 Card -->
+    <div class="step-card-wrapper">
+      <div class="step-card-inner">
+        <!-- Content Block -->
+        <div class="step-card-content">
+          <div class="step-number">04</div>
+          <div class="step-text">
+            <h3 class="step-heading">Coordinators see the whole picture</h3>
+            <p class="step-description">Every compliance score, every expiry date, every flag — visible across your entire team in one dashboard. No chasing. No surprises.</p>
+          </div>
+        </div>
+        <!-- Video Showcase block for this specific step -->
+        <div class="step-card-video">
+          <video src="./videos/your-step-4-video.mp4" playsinline autoplay muted loop></video>
+          <div class="video-accent-glow"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="roles-section">
+  <!-- Header Block -->
+  <div class="roles-header">
+    <p class="roles-tag">Role-Based Access</p>
+    <h2 class="roles-title">Two roles. One platform. Everyone sees exactly what they need.</h2>
+  </div>
+
+  <!-- Cards Grid Layout -->
+  <div class="roles-grid">
+    
+    <!-- Role Card 1: Support Coordinator -->
+    <div class="role-card card-blue">
+      <div class="card-image-wrapper">
+        <img src="./images/support-coordinator.jpg" alt="Support Coordinator checking metrics" class="card-img">
+      </div>
+      <div class="card-body">
+        <h3 class="role-heading heading-blue">Support Coordinator</h3>
+        <p class="role-subheading">Full organisational visibility</p>
+        
+        <ul class="features-list">
+          <li class="list-item">
+            <!-- Circled Icon Boundary (Blue) -->
+            <div class="icon-boundary boundary-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>Real-time compliance score across all workers</span>
+          </li>
+          <li class="list-item">
+            <div class="icon-boundary boundary-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>View every worker's session notes and flags</span>
+          </li>
+          <li class="list-item">
+            <div class="icon-boundary boundary-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>RP (restrictive practice) alerts — team-wide, immediate</span>
+          </li>
+          <li class="list-item">
+            <div class="icon-boundary boundary-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>Credential expiry overview for the whole team</span>
+          </li>
+          <li class="list-item">
+            <div class="icon-boundary boundary-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>One-click audit pack export for any participant</span>
+          </li>
+          <li class="list-item">
+            <div class="icon-boundary boundary-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>Weekly compliance digest emailed every Monday</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Role Card 2: Support Worker -->
+    <div class="role-card card-pink">
+      <div class="card-image-wrapper">
+        <img src="./images/support-worker.jpg" alt="Support Worker inputting data" class="card-img">
+      </div>
+      <div class="card-body">
+        <h3 class="role-heading heading-pink">Support Worker</h3>
+        <p class="role-subheading">Their sessions. Their score. Nothing else.</p>
+        
+        <ul class="features-list">
+          <li class="list-item">
+            <!-- Circled Icon Boundary (Pink) -->
+            <div class="icon-boundary boundary-pink">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>Their own compliance score and rule breakdown</span>
+          </li>
+          <li class="list-item">
+            <div class="icon-boundary boundary-pink">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>Their sessions and participants only</span>
+          </li>
+          <li class="list-item">
+            <div class="icon-boundary boundary-pink">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>Voice-to-text notes in any language</span>
+          </li>
+          <li class="list-item">
+            <div class="icon-boundary boundary-pink">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>Suggestions to fix compliance issues automatically</span>
+          </li>
+          <li class="list-item">
+            <div class="icon-boundary boundary-pink">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>Their own credential wallet</span>
+          </li>
+          <li class="list-item">
+            <div class="icon-boundary boundary-pink">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>Session history summary before each shift</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Privacy Disclaimer Note -->
+  <p class="roles-disclaimer">
+    Workers cannot see other workers' data, invoices, or organisation settings. Data separation is enforced at the database level.
+  </p>
+</section>
+
+<section class="carecliq-scatter-section">
+  <div class="scatter-container">
+    
+    <!-- Left Fixed text Column -->
+    <div class="scatter-sticky-sidebar">
+      <span class="sub-badge">Real People. Real Workloads.</span>
+      <h2>Real time saved.</h2>
+      <p>CareCliQ is built for the people who show up every day and do the work.</p>
+    </div>
+
+    <!-- Right Dynamic Runway Column -->
+    <div class="scatter-runway">
+      
+      <!-- Card 1 -->
+      <div class="scatter-card card-pos-1" id="scatterCard1" tabindex="0">
+        <div class="card-visual-wrapper">
+          <!-- Custom Avatar Asset Implemented Natively -->
+          <div class="avatar-frame">
+            <img src="./images/avatar-amara.jpg" alt="Amara" class="story-avatar">
+          </div>
+          <button class="play-audio-btn">
+            <span>Hear from Amara</span>
+            <span class="play-icon-dot">▶</span>
+          </button>
+        </div>
+        <div class="card-content-block">
+          <span class="quote-mark">“</span>
+          <p class="story-main-quote">Speaks Swahili at home, writes her progress notes in English using CareCliQ's voice-to-note in under a minute.</p>
+          <div class="profile-attribution">
+            <h3>Amara</h3>
+            <p>Support Worker • Adelaide, SA</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="scatter-card card-pos-2" id="scatterCard2" tabindex="0">
+        <div class="card-visual-wrapper">
+          <div class="avatar-frame">
+            <img src="./images/avatar-david.jpg" alt="David" class="story-avatar">
+          </div>
+          <button class="play-audio-btn">
+            <span>Hear from David</span>
+            <span class="play-icon-dot">▶</span>
+          </button>
+        </div>
+        <div class="card-content-block">
+          <span class="quote-mark">“</span>
+          <p class="story-main-quote">Manages a team of 12 support workers. Uses the CareCliQ dashboard to check compliance status across his whole team in one glance.</p>
+          <div class="profile-attribution">
+            <h3>David</h3>
+            <p>Care Coordinator • South Australia</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="scatter-card card-pos-3" id="scatterCard3" tabindex="0">
+        <div class="card-visual-wrapper">
+          <div class="avatar-frame">
+            <img src="./images/avatar-priya.jpg" alt="Priya" class="story-avatar">
+          </div>
+          <button class="play-audio-btn">
+            <span>Hear from Priya</span>
+            <span class="play-icon-dot">▶</span>
+          </button>
+        </div>
+        <div class="card-content-block">
+          <span class="quote-mark">“</span>
+          <p class="story-main-quote">Runs a 20-person disability support business. Uses CareCliQ to get audit-ready ahead of the 1 July 2026 NDIS registration deadline.</p>
+          <div class="profile-attribution">
+            <h3>Priya</h3>
+            <p>Business Owner • South Australia</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="carecliq-translation-section">
+  <div class="translation-wrapper">
+    
+    <!-- Header Block -->
+    <div id="languages" class="translation-header">
+      <span class="badge-accent">Multilingual Teams</span>
+      <h2>Your workers write in their language.<br><span class="accent-text">NDIS reads it in English.</span></h2>
+      <p class="translation-lead-text">
+        Australia's disability support workforce is culturally and linguistically diverse. 
+        CareCliQ bridges the gap automatically—no manual translation, no compliance risk.
+      </p>
+    </div>
+
+    <!-- The Living Translation Display -->
+    <div class="translation-display-grid">
+      
+      <!-- Left Card: Worker Input Screen -->
+      <div class="translation-card input-pane" id="workerCard">
+        <div class="card-meta">
+          <span class="panel-tag tag-input">Worker Input • <span id="activeLanguageLabel">Hindi</span></span>
+          <div class="status-pulse-dot"></div>
+        </div>
+        <div class="card-body-content">
+          <p class="trans-text" id="workerText">आज जेम्स के साथ खाना पकाने में मदद की। वह थका हुआ था लेकिन खुश था। नहाने में थोड़ी सहायता की।</p>
+        </div>
+        <div class="card-footer-note">
+          <span>Captured via voice-to-text</span>
+        </div>
+      </div>
+
+      <!-- Center Flow Connector Route -->
+      <div class="translation-flow-connector">
+        <div class="arrow-wrapper">
+          <svg class="flow-arrow-svg" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="flow-micro-label">CareCliQ Formats</span>
+      </div>
+
+      <!-- Right Card: NDIS Compliant Output Note -->
+      <div class="translation-card output-pane">
+        <div class="card-meta">
+          <span class="panel-tag tag-output">NDIS Compliant Note</span>
+          <span class="compliance-badge">Audit Ready</span>
+        </div>
+        <div class="card-body-content">
+          <p class="trans-text" id="compliantText">Participant was supported with meal preparation and personal hygiene including showering with minimal assistance. Goals addressed: independence in ADLs (Goal 2.1). No incidents noted.</p>
+        </div>
+        <div class="card-footer-note accent-footer">
+          <span>Formatted to NDIS Quality & Safeguards standards</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Interactive Language Toggles Selector Bar -->
+    <div class="language-pill-row-scroller">
+     <div class="language-pill-container" id="languagePills">
+
+</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="carecliq-cta-section">
+  <div class="cta-container">
+    
+    <!-- Decorative Ambient Human Background Rings -->
+    <div class="ambient-glow-circle"></div>
+
+    <!-- Content Block -->
+    <div id="contact" class="cta-content-wrapper">
+      <h2>Built for businesses who care<br>about <span class="highlight-text">documentation quality.</span></h2>
+      <p class="cta-subtext">Join the waitlist. No lock-in contracts.</p>
+
+      <!-- Organic Inline Form Wrapper -->
+      <form class="cta-organic-form" id="waitlistForm" onsubmit="event.preventDefault();">
+        <div class="input-pill-group">
+          <input type="text" class="human-input" placeholder="Your name" required aria-label="Your name">
+        </div>
+        
+        <div class="input-pill-group">
+          <input type="email" class="human-input" placeholder="Work email" required aria-label="Work email">
+        </div>
+
+        <button type="submit" class="human-submit-btn">
+          <span class="btn-text">Get Early Access</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </form>
+
+      <!-- Reassuring Human Disclaimer -->
+      <p class="form-disclaimer-note">No spam. No contracts. Just early access.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="carecliq-master-footer">
+  <div class="footer-container">
+    
+    <!-- Polished Left Layout Column Block -->
+    <div class="footer-left-brand">
+
+      <a href="#" class="footer-logo" aria-label="CareCliQ Home">
+        <img src="./images/logo2.png" alt="CareCliQ Logo" class="footer-logo-img">
+      </a>
+
+      <span class="footer-em-dash">&mdash;</span>
+
+      <p class="footer-compliance-text">
+        NDIS Compliance. Any Language. Built by CC Tech Australia.
+      </p>
+
+    </div>
+
+    <!-- Right Navigation Links & Copyright -->
+    <div class="footer-right-links">
+     <nav class="footer-nav" aria-label="Footer Links">
+  <a href="privacy.html">Privacy</a>
+  <a href="terms.html">Terms</a>
+  <a href="contact.html">Contact</a>
+  <a href="ndis-commission.html" class="highlight-link">NDIS Commission</a>
+</nav>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CareCliQ. Built for care teams.</p>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- UNIVERSAL VIDEO / AUDIO MODAL -->
+
+<div
+  id="mediaModal"
+  class="carecliq-media-modal"
+  aria-hidden="true"
+>
+
+  <div class="carecliq-media-backdrop"></div>
+
+  <div
+    class="carecliq-media-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="mediaModalTitle"
+  >
+
+    <div class="carecliq-media-header">
+
+      <h2 id="mediaModalTitle">
+        CareCliQ Media
+      </h2>
+
+      <button
+        type="button"
+        id="closeMediaModal"
+        class="carecliq-media-close"
+        aria-label="Close media"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="carecliq-media-content">
+
+      <video
+        id="modalVideoPlayer"
+        controls
+        playsinline
+        hidden
+      ></video>
+
+      <audio
+        id="modalAudioPlayer"
+        controls
+        hidden
+      ></audio>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="../config.js"></script>
+
+<script src="script.js"></script>
+
+<script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
+
+<script src="animations.js"></script>
+
+</body>
+</html>

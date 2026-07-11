@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CareCliQ CMS Login</title>
+
+<link rel="stylesheet" href="admin-login.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<main class="admin-login-page">
+
+<section class="admin-login-card">
+
+<div class="admin-login-brand">
+
+<img src="../images/logo2.png" alt="CareCliQ">
+
+<span>CMS</span>
+
+</div>
+
+<div class="admin-login-heading">
+
+<p class="admin-login-badge">
+Secure administrator gateway
+</p>
+
+<h1>
+Welcome back
+</h1>
+
+<p>
+Sign in to manage CareCliQ website content, demo requests and platform settings.
+</p>
+
+</div>
+
+<form id="adminLoginForm">
+
+<div class="admin-form-field">
+
+<label for="adminEmail">
+Email address
+</label>
+
+<input
+type="email"
+id="adminEmail"
+placeholder="admin@carecliq.com"
+autocomplete="email"
+required>
+
+</div>
+
+<div class="admin-form-field">
+
+<label for="adminPassword">
+Password
+</label>
+
+<div class="admin-password-field">
+
+<input
+type="password"
+id="adminPassword"
+placeholder="Enter your password"
+autocomplete="current-password"
+required>
+
+<button
+type="button"
+id="toggleAdminPassword"
+aria-label="Show password">
+👁
+</button>
+
+</div>
+
+</div>
+
+<p id="adminLoginStatus"></p>
+
+<button
+type="submit"
+id="adminLoginButton">
+Sign in to CMS
+</button>
+
+</form>
+
+<a href="../index.html" class="admin-return-link">
+← Return to CareCliQ website
+</a>
+
+</section>
+
+</main>
+
+<script src="./admin-login.js?v=2"></script>
+
+</body>
+
+</html>

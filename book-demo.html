@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Book Demo | CareCliQ</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<main class="demo-page">
+
+<section class="demo-hero">
+
+    <div class="demo-hero-logo">
+
+        <img
+            src="./images/logo2.png"
+            alt="CareCliQ"
+            class="floating-demo-logo"
+        >
+
+    </div>
+
+    <div class="demo-hero-content">
+
+        <h1>
+            Experience
+            <span>CareCliQ</span>
+        </h1>
+
+        <p>
+            See how CareCliQ helps care teams communicate better,
+            stay compliant and support every language.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="demo-container">
+
+ <div class="demo-benefits-column">
+
+  <div class="demo-benefits">
+
+    <h2>
+      Why teams choose CareCliQ
+    </h2>
+
+    <ul>
+      <li>✓ Multilingual care support</li>
+      <li>✓ Better team communication</li>
+      <li>✓ Compliance-focused workflows</li>
+      <li>✓ Personal platform walkthrough</li>
+    </ul>
+
+  </div>
+
+
+  <section class="demo-stats-section">
+
+    <div class="demo-stat-card stat-card-pink">
+
+      <h3>10–20 hrs</h3>
+
+      <p>
+        Weekly time spent on documentation outside of direct care work.
+      </p>
+
+    </div>
+
+
+    <div class="demo-stat-card stat-card-blue">
+
+      <h3>NDIS workflows</h3>
+
+      <p>
+        Documentation requirements across disability support providers in Australia.
+      </p>
+
+    </div>
+
+
+    <div class="demo-stat-card stat-card-green">
+
+      <h3>Multilingual teams</h3>
+
+      <p>
+        Care workers often document in a second or third language under time pressure.
+      </p>
+
+    </div>
+
+  </section>
+
+</div>
+
+  <div class="demo-form">
+
+<h2>
+Request a Demo
+</h2>
+
+<div class="client-type-toggle">
+
+<button type="button" class="active" data-type="provider">
+Care Provider
+</button>
+
+<button type="button" data-type="organisation">
+Organisation
+</button>
+
+<button type="button" data-type="partner">
+Partner
+</button>
+
+</div>
+
+<p id="demoMessage">
+Tell us about your care team and we will arrange your walkthrough.
+</p>
+
+<form id="demoRequestForm">
+
+<input type="hidden" id="clientType" value="provider">
+
+<div class="form-field">
+<input type="text" id="fullName" required>
+<label>Full Name</label>
+</div>
+
+<div class="form-field">
+<input type="text" id="companyField" required>
+<label>Organisation Name</label>
+</div>
+
+<div class="form-field">
+<input type="email" id="emailAddress" required>
+<label>Email Address</label>
+</div>
+
+<div class="form-field">
+<input type="tel" id="phoneNumber" required>
+<label>Phone Number</label>
+</div>
+
+<div class="form-field">
+<textarea id="clientNeeds" required></textarea>
+<label>Tell us about your needs</label>
+</div>
+
+<button type="submit" class="btn-action-pill">
+Request Demo
+</button>
+
+<p id="demoSubmitStatus"></p>
+
+</form>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const DEMO_API =
+    "https://carecliq-redesign.onrender.com/api/demo-requests";
+
+  const typeButtons =
+    document.querySelectorAll(
+      ".client-type-toggle button"
+    );
+
+  const demoMessage =
+    document.getElementById("demoMessage");
+
+  const companyLabel =
+    document.querySelector(
+      "#companyField + label"
+    );
+
+  const clientTypeInput =
+    document.getElementById("clientType");
+
+  const demoForm =
+    document.getElementById("demoRequestForm");
+
+
+  // FORM FIELDS
+
+  const fullNameInput =
+    document.getElementById("fullName");
+
+  const companyInput =
+    document.getElementById("companyField");
+
+  const emailInput =
+    document.getElementById("emailAddress");
+
+  const phoneInput =
+    document.getElementById("phoneNumber");
+
+  const messageInput =
+    document.getElementById("clientNeeds");
+
+
+// =====================================
+// PREFILL FROM LOGGED-IN USER
+// =====================================
+
+const storedUser =
+  localStorage.getItem("user");
+
+if (storedUser) {
+
+  try {
+
+    const loggedInUser =
+      JSON.parse(storedUser);
+
+
+    if (
+      fullNameInput &&
+      loggedInUser.fullName
+    ) {
+
+      fullNameInput.value =
+        loggedInUser.fullName;
+
+    }
+
+
+    if (
+      companyInput &&
+      loggedInUser.organisation
+    ) {
+
+      companyInput.value =
+        loggedInUser.organisation;
+
+    }
+
+
+    if (
+      emailInput &&
+      loggedInUser.email
+    ) {
+
+      emailInput.value =
+        loggedInUser.email;
+
+    }
+
+
+    if (
+      phoneInput &&
+      loggedInUser.phone
+    ) {
+
+      phoneInput.value =
+        loggedInUser.phone;
+
+    }
+
+
+    document
+      .querySelectorAll(
+        "#demoRequestForm .form-field input, #demoRequestForm .form-field textarea"
+      )
+      .forEach(field => {
+
+        if (field.value.trim()) {
+
+          field.classList.add(
+            "has-value"
+          );
+
+        }
+
+      });
+
+  }
+  catch (error) {
+
+    console.error(
+      "Could not load saved user details:",
+      error
+    );
+
+  }
+
+}
+  // CREATE TOAST AUTOMATICALLY
+
+  let demoToast =
+    document.getElementById("demoToast");
+
+  if (!demoToast) {
+
+    demoToast =
+      document.createElement("div");
+
+    demoToast.id =
+      "demoToast";
+
+    demoToast.className =
+      "demo-toast";
+
+    demoToast.setAttribute(
+      "role",
+      "alert"
+    );
+
+    demoToast.setAttribute(
+      "aria-live",
+      "polite"
+    );
+
+    document.body.appendChild(
+      demoToast
+    );
+
+  }
+
+
+  let demoToastTimer;
+
+
+  function showDemoToast(message, type) {
+
+  clearTimeout(demoToastTimer);
+
+  demoToast.textContent = message;
+
+  demoToast.className =
+    `demo-toast demo-toast-${type}`;
+
+  requestAnimationFrame(() => {
+
+    demoToast.classList.add(
+      "demo-toast-visible"
+    );
+
+  });
+
+  demoToastTimer = setTimeout(() => {
+
+    demoToast.classList.remove(
+      "demo-toast-visible"
+    );
+
+  }, 8000);
+
+}
+
+
+  // CLIENT TYPE BUTTONS
+
+  typeButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        typeButtons.forEach(btn => {
+
+          btn.classList.remove(
+            "active"
+          );
+
+        });
+
+        button.classList.add(
+          "active"
+        );
+
+        const type =
+          button.dataset.type;
+
+        if (clientTypeInput) {
+
+          clientTypeInput.value =
+            type;
+
+        }
+
+
+        if (type === "provider") {
+
+          if (demoMessage) {
+
+            demoMessage.textContent =
+              "Tell us about your care team and we will arrange your personalised CareCliQ walkthrough.";
+
+          }
+
+          if (companyLabel) {
+
+            companyLabel.textContent =
+              "Care Organisation";
+
+          }
+
+        }
+
+
+        if (
+          type ===
+          "organisation"
+        ) {
+
+          if (demoMessage) {
+
+            demoMessage.textContent =
+              "Discover how CareCliQ can support your organisation's communication and workflow needs.";
+
+          }
+
+          if (companyLabel) {
+
+            companyLabel.textContent =
+              "Organisation Name";
+
+          }
+
+        }
+
+
+        if (type === "partner") {
+
+          if (demoMessage) {
+
+            demoMessage.textContent =
+              "Tell us how we can work together to improve care experiences.";
+
+          }
+
+          if (companyLabel) {
+
+            companyLabel.textContent =
+              "Company / Partnership Name";
+
+          }
+
+        }
+
+      }
+    );
+
+  });
+
+
+  if (!demoForm) {
+
+    console.error(
+      "Demo form not found. Make sure the form has id='demoRequestForm'."
+    );
+
+    return;
+
+  }
+
+
+  // FORM SUBMISSION
+
+  demoForm.addEventListener(
+    "submit",
+    async event => {
+
+      event.preventDefault();
+
+
+      const submitButton =
+        demoForm.querySelector(
+          'button[type="submit"]'
+        );
+
+      const originalButtonText =
+        submitButton
+          ? submitButton.textContent
+          : "Request Demo";
+
+      const requestData = {
+
+        clientType:
+          clientTypeInput
+            ? clientTypeInput.value
+            : "provider",
+
+        fullName:
+          fullNameInput
+            ? fullNameInput.value.trim()
+            : "",
+
+        organisation:
+          companyInput
+            ? companyInput.value.trim()
+            : "",
+
+        email:
+          emailInput
+            ? emailInput.value.trim()
+            : "",
+
+        phone:
+          phoneInput
+            ? phoneInput.value.trim()
+            : "",
+
+        message:
+          messageInput
+            ? messageInput.value.trim()
+            : ""
+
+      };
+
+
+      if (submitButton) {
+
+        submitButton.disabled =
+          true;
+
+        submitButton.textContent =
+          "Sending request...";
+
+      }
+
+
+      try {
+
+        const response =
+          await fetch(
+            DEMO_API,
+            {
+              method:
+                "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+
+              body:
+                JSON.stringify(
+                  requestData
+                )
+            }
+          );
+
+
+        let result = {};
+
+        try {
+
+          result =
+            await response.json();
+
+        }
+        catch (jsonError) {
+
+          console.warn(
+            "Backend returned no JSON response"
+          );
+
+        }
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            result.message ||
+            `Request failed with status ${response.status}`
+          );
+
+        }
+
+
+        showDemoToast(
+          "Your demo request has been received successfully. The CareCliQ team will contact you soon.",
+          "success"
+        );
+
+
+        demoForm.reset();
+
+
+        if (clientTypeInput) {
+
+          clientTypeInput.value =
+            "provider";
+
+        }
+
+
+        typeButtons.forEach(
+          button => {
+
+            button.classList.remove(
+              "active"
+            );
+
+          }
+        );
+
+
+        if (typeButtons[0]) {
+
+          typeButtons[0]
+            .classList.add(
+              "active"
+            );
+
+        }
+
+
+        if (demoMessage) {
+
+          demoMessage.textContent =
+            "Tell us about your care team and we will arrange your personalised CareCliQ walkthrough.";
+
+        }
+
+
+        if (companyLabel) {
+
+          companyLabel.textContent =
+            "Care Organisation";
+
+        }
+
+      }
+      catch (error) {
+
+        console.error(
+          "Demo request failed:",
+          error
+        );
+
+
+        showDemoToast(
+          error.message ||
+          "Something went wrong. Please try again.",
+          "error"
+        );
+
+      }
+      finally {
+
+        if (submitButton) {
+
+          submitButton.disabled =
+            false;
+
+          submitButton.textContent =
+            originalButtonText;
+
+        }
+
+      }
+
+    }
+  );
+
+});
+</script>
+
+<div id="demoToast" class="demo-toast" role="alert" aria-live="polite"></div>
+</body>
+
+</html>

@@ -1,0 +1,866 @@
+
+/* =====================================
+   CARECLIQ LOGIN SYSTEM
+===================================== */
+
+:root {
+  --brand-pink: #db2777;
+  --login-text: #1f2937;
+  --login-muted: #6b7280;
+  --login-border: #e5e7eb;
+}
+
+
+/* =====================================
+   LOGIN MODAL — INDEX.HTML
+===================================== */
+html.login-modal-open,
+body.login-modal-open {
+  height: 100%;
+  overflow: hidden !important;
+}
+
+button.btn-login-link {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.carecliq-auth-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+
+
+}
+
+.carecliq-auth-modal.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.carecliq-auth-modal-content {
+  position: relative;
+
+  width: min(520px, 100%);
+  margin: 0 auto;
+  flex-shrink: 0;
+
+  opacity: 0;
+
+  transform:
+    perspective(1000px)
+    rotateX(-8deg)
+    translateY(40px)
+    scale(0.94);
+
+  transform-origin: center top;
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.6s cubic-bezier(.22, 1, .36, 1);
+}
+
+.carecliq-auth-modal.open .carecliq-auth-modal-content {
+  opacity: 1;
+
+  transform:
+    perspective(1000px)
+    rotateX(0deg)
+    translateY(0)
+    scale(1);
+}
+
+
+/* =====================================
+   LOGIN PAGE WRAPPER
+===================================== */
+
+.carecliq-login-page {
+  width: 100%;
+  min-height: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+}
+
+
+/* =====================================
+   LOGIN CARD
+===================================== */
+
+.carecliq-login-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 520px;
+  max-height: calc(100vh - 60px);
+
+overflow-y: auto;
+overflow-x: hidden;
+
+scrollbar-width: thin;
+
+  padding: 42px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 28px;
+
+  box-shadow:
+    0 35px 90px rgba(41, 37, 36, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+
+  color: var(--login-text);
+}
+
+.carecliq-login-card::-webkit-scrollbar{
+    width:8px;
+}
+
+.carecliq-login-card::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.carecliq-login-card::-webkit-scrollbar-thumb{
+    background:#d7d7d7;
+    border-radius:20px;
+}
+
+.carecliq-login-card::-webkit-scrollbar-thumb:hover{
+    background:#bdbdbd;
+}
+
+
+/* =====================================
+   CLOSE BUTTON
+===================================== */
+
+.login-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+
+  width: 40px;
+  height: 40px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  color: #292524;
+  font-size: 26px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.login-modal-close:hover {
+  transform: rotate(90deg);
+  background: #ffffff;
+}
+
+
+/* =====================================
+   LOGO
+===================================== */
+
+.carecliq-login-card .auth-logo {
+  margin: 0;
+}
+
+.carecliq-login-card .auth-logo img {
+  display: block;
+
+  width: auto;
+  height: 60px;
+
+  margin: 0 auto 25px;
+}
+
+
+/* =====================================
+   HEADING
+===================================== */
+
+.carecliq-login-card h1 {
+  margin: 0;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 2.4rem;
+  line-height: 1.1;
+
+  text-align: center;
+}
+
+.carecliq-login-card h1 span {
+  color: var(--brand-pink);
+}
+
+.carecliq-login-card > p {
+  margin: 20px 0 30px;
+
+  color: var(--login-muted);
+
+  text-align: center;
+  line-height: 1.6;
+}
+
+
+/* =====================================
+   CLIENT TOGGLE
+===================================== */
+
+.carecliq-login-card .auth-toggle {
+  display: flex;
+  gap: 5px;
+
+  margin-bottom: 30px;
+  padding: 5px;
+
+  background: #f3f4f6;
+  border-radius: 100px;
+}
+
+.carecliq-login-card .auth-toggle button {
+  flex: 1;
+
+  min-height: 44px;
+  padding: 10px 14px;
+
+  border: none;
+  border-radius: 100px;
+
+  background: transparent;
+
+  color: var(--login-muted);
+  font-family: inherit;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.carecliq-login-card .auth-toggle button:hover {
+  transform: none;
+}
+
+.carecliq-login-card .auth-toggle button.active {
+  background: #ffffff;
+  color: var(--brand-pink);
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =====================================
+   FORM
+===================================== */
+
+.carecliq-login-card form {
+  width: 100%;
+}
+
+.carecliq-login-card .form-field {
+  position: relative;
+
+  width: 100%;
+  margin-bottom: 22px;
+}
+
+.carecliq-login-card input {
+  width: 100%;
+  height: 58px;
+
+  box-sizing: border-box;
+
+  padding: 22px 50px 8px 16px;
+
+  border: 1px solid var(--login-border);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: var(--login-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+
+  outline: none;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.carecliq-login-card input:focus {
+  border-color: var(--brand-pink);
+
+  box-shadow:
+    0 0 0 4px rgba(219, 39, 119, 0.12);
+}
+
+.carecliq-login-card label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+
+  transform: translateY(-50%);
+
+  color: #9ca3af;
+
+  pointer-events: none;
+
+  transition:
+    top 0.2s ease,
+    transform 0.2s ease,
+    font-size 0.2s ease,
+    color 0.2s ease;
+}
+
+.carecliq-login-card input:focus ~ label,
+.carecliq-login-card input:valid ~ label,
+.carecliq-login-card input:not(:placeholder-shown) ~ label {
+  top: 8px;
+  transform: none;
+  color: var(--brand-pink);
+  font-size: 0.7rem;
+}
+
+
+/* =====================================
+   PASSWORD TOGGLE
+===================================== */
+
+.carecliq-login-card .password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  z-index: 5;
+
+  transform: translateY(-50%);
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.carecliq-login-card .password-toggle:hover {
+  transform: translateY(-50%);
+}
+
+
+/* =====================================
+   MAIN BUTTON
+===================================== */
+
+.carecliq-login-card .btn-action-pill {
+  width: 100%;
+  min-height: 56px;
+
+  border: none;
+
+  cursor: pointer;
+}
+
+
+/* =====================================
+   LOGIN LINKS
+===================================== */
+
+.carecliq-login-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  gap: 15px;
+  margin-top: 28px;
+}
+
+.carecliq-login-links a {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 46px;
+  padding: 10px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.45);
+
+  color: var(--brand-pink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.carecliq-login-links a:hover {
+  background: rgba(255, 255, 255, 0.78);
+
+  box-shadow:
+    0 12px 24px rgba(236, 72, 153, 0.18);
+
+  transform: translateY(-2px);
+}
+
+
+/* =====================================
+   STANDALONE LOGIN.HTML
+===================================== */
+
+html.standalone-login-root,
+body.standalone-login-page {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
+  overflow: hidden;
+}
+
+body.standalone-login-page .carecliq-auth-modal {
+  position: fixed;
+  inset: 0;
+
+  display: block;
+
+  padding: 24px 20px;
+
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background: #fdf6ee;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+}
+
+body.standalone-login-page .carecliq-auth-modal-content {
+  width: min(520px, 100%);
+
+  margin: 0 auto;
+
+  opacity: 1;
+  transform: none;
+}
+
+body.standalone-login-page .carecliq-login-page {
+  width: 100%;
+  min-height: calc(100vh - 48px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+}
+
+body.standalone-login-page .carecliq-login-card {
+
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+body.standalone-login-page .login-modal-close {
+  display: none;
+}
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 600px) {
+
+  .carecliq-auth-modal {
+    align-items: flex-start;
+
+    padding: 14px;
+  }
+
+  .carecliq-auth-modal-content {
+    margin: 0 auto;
+  }
+
+  .carecliq-login-card {
+    padding: 34px 22px 26px;
+    border-radius: 22px;
+  }
+
+  .carecliq-login-card h1 {
+    font-size: 2rem;
+  }
+
+  .carecliq-login-links {
+    flex-direction: column;
+  }
+
+  .carecliq-login-links a {
+    width: 100%;
+  }
+
+  body.standalone-login-page .carecliq-auth-modal {
+    padding: 16px;
+  }
+
+  body.standalone-login-page .carecliq-login-page {
+    min-height: calc(100vh - 32px);
+    align-items: flex-start;
+  }
+
+}
+
+/* =====================================
+   LOGIN.HTML SCROLL FIX ONLY
+===================================== */
+
+html.standalone-login-root,
+body.standalone-login-page {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+body.standalone-login-page {
+  position: static !important;
+}
+
+body.standalone-login-page .carecliq-auth-modal {
+  position: relative !important;
+  inset: auto !important;
+
+  width: 100% !important;
+  min-height: 100vh !important;
+  height: auto !important;
+
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+
+  padding: 24px 20px !important;
+
+  overflow: visible !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+body.standalone-login-page .carecliq-auth-modal-content {
+  width: min(520px, 100%) !important;
+  max-height: none !important;
+
+  margin: 0 auto !important;
+
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+body.standalone-login-page .carecliq-login-page {
+  width: 100% !important;
+  min-height: auto !important;
+
+  padding: 0 !important;
+
+  overflow: visible !important;
+}
+
+body.standalone-login-page .carecliq-login-card {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.forgot-password-trigger,
+.forgot-password-back {
+  border: none;
+  background: transparent;
+  color: var(--brand-pink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.forgot-password-back {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.auth-panel[hidden] {
+  display: none !important;
+}
+
+.auth-panel {
+  width: 100%;
+}
+
+.auth-back-button {
+  display: block;
+
+  width: 100%;
+  margin-top: 24px;
+
+  color: var(--brand-pink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+
+.auth-select-field select {
+  width: 100%;
+  height: 58px;
+
+  padding: 0 16px;
+
+  border: 1px solid var(--login-border);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: var(--login-text);
+  font: inherit;
+
+  outline: none;
+}
+
+.auth-select-field select:focus {
+  border-color: var(--brand-pink);
+
+  box-shadow:
+    0 0 0 4px rgba(219, 39, 119, 0.12);
+}
+
+.auth-panel[hidden] {
+  display: none !important;
+}
+
+.auth-panel {
+  width: 100%;
+}
+
+.auth-panel-link,
+.auth-back-button {
+  border: none;
+  background: transparent;
+
+  color: var(--brand-pink);
+
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.auth-panel-link {
+  flex: 1;
+  min-height: 46px;
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.auth-back-button {
+  display: block;
+
+  width: 100%;
+  margin-top: 24px;
+
+  text-align: center;
+}
+
+.auth-select-field select {
+  width: 100%;
+  height: 58px;
+
+  padding: 0 16px;
+
+  border: 1px solid var(--login-border);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: var(--login-text);
+  font: inherit;
+
+  outline: none;
+}
+
+.carecliq-login-card .form-field {
+  position: relative;
+}
+
+.carecliq-login-card .password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  z-index: 6;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateY(-50%);
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+
+  font-size: 17px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.carecliq-login-card .password-toggle:hover,
+.carecliq-login-card .password-toggle:active {
+  transform: translateY(-50%);
+}
+
+/* =====================================
+   FINAL AUTH MOBILE AND TABLET
+===================================== */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+  .carecliq-auth-modal-content {
+    width: min(560px, calc(100% - 48px));
+  }
+
+  .carecliq-login-card {
+    padding: 36px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  html.standalone-login-root,
+  body.standalone-login-page {
+    height: 100%;
+  }
+
+  body.standalone-login-page
+  .carecliq-auth-modal {
+    padding: 14px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  body.standalone-login-page
+  .carecliq-auth-modal-content {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  body.standalone-login-page
+  .carecliq-login-page {
+    min-height: calc(100vh - 28px);
+
+    align-items: flex-start;
+  }
+
+  .carecliq-login-card {
+    width: 100%;
+    padding: 27px 18px;
+
+    border-radius: 21px;
+  }
+
+  .carecliq-login-card h1 {
+    font-size: 1.85rem;
+  }
+
+  .carecliq-login-card input,
+  .carecliq-login-card select {
+    font-size: 16px;
+  }
+
+  .carecliq-login-links {
+    flex-direction: column;
+  }
+
+  .carecliq-login-links > * {
+    width: 100%;
+  }
+
+}

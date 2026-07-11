@@ -1,0 +1,7 @@
+{
+  "liveServer.settings.ignoreFiles": [
+    "**/backend/uploads/**",
+    "**/backend/data/**",
+    "**/backend/node_modules/**"
+  ]
+}

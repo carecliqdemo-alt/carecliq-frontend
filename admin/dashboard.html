@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareCliQ CMS Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body class="admin-page">
+
+<div class="cms-layout">
+
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            CareCliQ CMS
+        </div>
+
+
+      <nav>
+
+<button class="active" data-section="homepage">
+Homepage
+</button>
+
+<button data-section="features">
+Features
+</button>
+
+<button data-section="process">
+How It Works
+</button>
+
+<button data-section="story">
+Story
+</button>
+
+<button data-section="roles">
+Roles
+</button>
+
+<button data-section="testimonials">
+Testimonials
+</button>
+
+<button data-section="demo-requests">
+  Demo Requests
+</button>
+
+<button data-section="translation">
+Translation
+</button>
+
+<button data-section="cta">
+CTA
+</button>
+
+<button data-section="footer">
+Footer
+</button>
+
+<button data-section="media">
+Media Library
+</button>
+
+<button data-section="settings">
+Settings
+</button>
+
+</nav>
+    </aside>
+
+
+
+
+    <!-- MAIN AREA -->
+
+   <main class="content">
+
+
+    <header class="topbar">
+
+        <h1>
+            Homepage Editor
+        </h1>
+
+      <div class="topbar-actions">
+
+<button id="saveBtn">
+Save Changes
+</button>
+
+<button
+type="button"
+id="logoutBtn">
+Logout
+</button>
+
+</div>
+
+    </header>
+
+
+
+     <div id="editorArea">
+
+
+<!-- HOMEPAGE -->
+
+<section class="editor-section active" id="homepage">
+
+
+<div class="editor-card">
+
+
+<h2>
+Hero Section
+</h2>
+
+
+<label>
+Heading
+</label>
+
+<input id="heroTitle">
+
+
+
+<label>
+Subtitle
+</label>
+
+<textarea id="heroSubtitle"></textarea>
+
+
+
+<label>
+Primary Button
+</label>
+
+<input id="primaryButton">
+
+
+
+<label>
+Secondary Button
+</label>
+
+<input id="secondaryButton">
+
+
+
+<label>Hero Video URL</label>
+
+<input
+  id="heroVideo"
+  placeholder="/uploads/your-hero-video.mp4"
+>
+
+</div>
+
+
+</section>
+
+
+
+
+<!-- FEATURES -->
+
+<section class="editor-section" id="features">
+
+
+<div class="editor-card">
+
+
+<h2>
+Features Editor
+</h2>
+
+
+
+<button id="addFeature">
++ Add Feature
+</button>
+
+
+
+<div id="featuresContainer"></div>
+
+
+
+<button id="saveFeatures">
+Save Features
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- PROCESS -->
+
+<section class="editor-section" id="process">
+
+
+<div class="editor-card">
+
+
+<h2>
+How It Works Editor
+</h2>
+
+
+
+<button id="addProcess">
++ Add Step
+</button>
+
+
+
+<div id="processList"></div>
+
+
+
+<button id="saveProcess">
+Save Steps
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+<section class="editor-section" id="story">
+
+    <div class="editor-card">
+
+        <h2>Story</h2>
+
+        <label>Badge</label>
+        <input id="storyBadge">
+
+        <label>Title</label>
+        <input id="storyTitle">
+
+        <label>Description</label>
+        <textarea id="storyDescription"></textarea>
+
+<label>Story Video URL</label>
+
+<input
+    id="storyImage"
+    placeholder="/uploads/your-story-video.mp4"
+>
+    </div>
+
+</section>
+
+
+
+<section class="editor-section" id="roles">
+
+<div class="editor-card">
+
+<h2>Roles</h2>
+
+<label>Section Title</label>
+<input id="rolesTitle">
+
+<label>Section Subtitle</label>
+<textarea id="rolesSubtitle"></textarea>
+
+<div id="rolesList"></div>
+
+<button id="addRole">
++ Add Role Card
+</button>
+
+</div>
+
+</section>
+
+
+<section class="editor-section" id="testimonials">
+
+    <div class="editor-card">
+
+        <h2>
+            Testimonials
+        </h2>
+
+        <button id="addTestimonial">
+            + Add Testimonial
+        </button>
+
+        <div id="testimonialsList"></div>
+
+        <button id="saveTestimonials">
+            Save Testimonials
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<section class="editor-section" id="translation">
+
+<div class="editor-card">
+
+<h2>Translation</h2>
+
+
+<label>Badge</label>
+<input id="translationBadge">
+
+
+<label>Title</label>
+<input id="translationTitle">
+
+
+<label>Description</label>
+<textarea id="translationDescription"></textarea>
+
+
+
+<h3>
+Languages
+</h3>
+
+
+<button id="addLanguage">
++ Add Language
+</button>
+
+
+<div id="translationLanguages"></div>
+
+
+</div>
+
+</section>
+
+
+<section class="editor-section" id="cta">
+
+<div class="editor-card">
+
+<h2>Call To Action</h2>
+
+<label>Title</label>
+<input id="ctaTitle">
+
+<label>Description</label>
+<textarea id="ctaDescription"></textarea>
+
+<label>Primary Button</label>
+<input id="ctaPrimary">
+
+<label>Secondary Button</label>
+<input id="ctaSecondary">
+
+</div>
+
+</section>
+
+
+<section class="editor-section" id="footer">
+
+    
+<div class="editor-card">
+
+<h2>Footer</h2>
+
+
+<label>
+Company Name
+</label>
+
+<input id="footerCompany">
+
+
+
+<label>
+Description
+</label>
+
+<textarea id="footerDescription"></textarea>
+
+
+
+<h3>
+Contact Information
+</h3>
+
+
+<label>
+Email
+</label>
+
+<input id="footerEmail">
+
+
+
+<label>
+Phone
+</label>
+
+<input id="footerPhone">
+
+
+
+<label>
+Location
+</label>
+
+<input id="footerAddress">
+
+
+
+<h3>
+Icons
+</h3>
+
+
+<label>
+Email Icon
+</label>
+
+<input id="footerEmailIcon" value="mail">
+
+
+
+<label>
+Phone Icon
+</label>
+
+<input id="footerPhoneIcon" value="phone">
+
+
+
+<label>
+Location Icon
+</label>
+
+<input id="footerLocationIcon" value="map-pin">
+
+
+
+<label>
+Copyright
+</label>
+
+<input id="footerCopyright">
+
+
+</div>
+
+</section>
+
+<section class="editor-section" id="demo-requests">
+
+  <div class="editor-card">
+
+    <h2>Demo Requests</h2>
+
+    <p>
+      View demo booking requests submitted from the Book Demo page.
+    </p>
+
+    <div id="demoRequestsList"></div>
+
+  </div>
+
+</section>
+
+<!-- MEDIA LIBRARY -->
+
+<section class="editor-section" id="media">
+
+  <div class="editor-card">
+
+    <h2>Media Library</h2>
+
+    <p>
+      Upload media once, then copy its URL into any section.
+    </p>
+
+    <input
+      type="file"
+      id="mediaUploadInput"
+      accept="video/*,audio/*,image/*"
+      multiple
+    >
+
+    <button
+      type="button"
+      id="uploadMediaBtn"
+    >
+      Upload Media
+    </button>
+
+    <p id="mediaUploadStatus"></p>
+
+    <div id="mediaGrid"></div>
+
+  </div>
+
+</section>
+
+<!-- SETTINGS -->
+
+<section class="editor-section" id="settings">
+
+<div class="editor-card">
+
+<h2>Settings</h2>
+
+<label>Website Name</label>
+<input id="siteName">
+
+<label>Website Logo</label>
+<input
+  id="siteLogo"
+  placeholder="/images/logo2.png"
+>
+
+<label>Website Favicon</label>
+<input
+  id="siteFavicon"
+  placeholder="/images/favicon.ico"
+>
+
+</div>
+
+</section>
+
+
+</div>
+    </main>
+
+
+</div>
+
+<script src="modules/hero.js"></script>
+<script src="../config.js"></script>
+<script src="modules/features.js"></script>
+<script src="modules/process.js"></script>
+<script src="modules/story.js"></script>
+<script src="modules/roles.js"></script>
+<script src="modules/testimonials.js"></script>
+<script src="modules/translation.js"></script>
+<script src="modules/cta.js"></script>
+<script src="modules/footer.js"></script>
+<script src="modules/media.js"></script>
+<script src="modules/settings.js"></script>
+<script src="modules/demoRequests.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

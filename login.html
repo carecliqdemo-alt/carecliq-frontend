@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" class="standalone-login-root">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Account | CareCliQ</title>
+
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./frontend/css/login.css">
+<link rel="stylesheet" href="./frontend/css/auth.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="standalone-login-page">
+
+<div class="carecliq-auth-modal">
+
+<div class="carecliq-auth-modal-content">
+
+<main class="carecliq-login-page">
+
+<section class="carecliq-login-card">
+
+
+<!-- LOGIN PANEL -->
+
+<div id="loginPanel" class="auth-panel">
+
+<div class="auth-logo">
+<img src="./images/logo2.png" alt="CareCliQ">
+</div>
+
+<h1>
+Welcome <span>to CareCliQ</span>
+</h1>
+
+<p>
+Sign in to continue managing your CareCliQ workspace.
+</p>
+
+<form id="loginForm">
+
+<div class="form-field">
+
+<input
+id="loginEmail"
+type="email"
+required>
+
+<label>Email Address</label>
+
+</div>
+
+<div class="form-field">
+
+<input
+id="loginPassword"
+type="password"
+required>
+
+<button
+type="button"
+class="password-toggle"
+data-target="loginPassword"
+aria-label="Show password">
+👁
+</button>
+
+<label>Password</label>
+
+</div>
+
+<button
+class="btn-action-pill"
+type="submit">
+Sign In
+</button>
+
+</form>
+
+<div class="carecliq-login-links">
+
+<button
+type="button"
+class="auth-panel-link"
+data-show-panel="forgot">
+Forgot Password?
+</button>
+
+<button
+type="button"
+class="auth-panel-link"
+data-show-panel="register">
+Create Account
+</button>
+
+</div>
+
+</div>
+
+
+<!-- REGISTER PANEL -->
+
+<div id="registerPanel" class="auth-panel" hidden>
+
+<div class="auth-logo">
+<img src="./images/logo2.png" alt="CareCliQ">
+</div>
+
+<h1>
+Create <span>Account</span>
+</h1>
+
+<p>
+Join CareCliQ and simplify multilingual care communication.
+</p>
+
+<form id="registerForm">
+
+<div class="form-field">
+
+<input
+id="fullName"
+type="text"
+required>
+
+<label>Full Name</label>
+
+</div>
+
+<div class="form-field">
+
+<input
+id="organisation"
+type="text"
+required>
+
+<label>Organisation</label>
+
+</div>
+
+<div class="form-field auth-select-field">
+
+<select id="role" required>
+
+<option value="" disabled selected>
+Select Your Role
+</option>
+
+<option value="Support Coordinator">
+Support Coordinator
+</option>
+
+<option value="Support Worker">
+Support Worker
+</option>
+
+<option value="Provider">
+Provider
+</option>
+
+<option value="Manager">
+Manager
+</option>
+
+<option value="Administrator">
+Administrator
+</option>
+
+<option value="Interpreter">
+Interpreter
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
+</div>
+
+<div class="form-field">
+
+<input
+id="registerEmail"
+type="email"
+required>
+
+<label>Email Address</label>
+
+</div>
+
+<div class="form-field">
+
+<input
+id="phone"
+type="tel"
+required>
+
+<label>Phone Number</label>
+
+</div>
+
+<div class="form-field">
+
+<input
+id="registerPassword"
+type="password"
+required>
+
+<button
+type="button"
+class="password-toggle"
+data-target="registerPassword"
+aria-label="Show password">
+👁
+</button>
+
+<label>Password</label>
+
+</div>
+
+<div class="form-field">
+
+<input
+id="confirmPassword"
+type="password"
+required>
+
+<button
+type="button"
+class="password-toggle"
+data-target="confirmPassword"
+aria-label="Show password">
+👁
+</button>
+
+<label>Confirm Password</label>
+
+</div>
+
+<button
+class="btn-action-pill"
+type="submit">
+Create Account
+</button>
+
+</form>
+
+<button
+type="button"
+class="auth-back-button"
+data-show-panel="login">
+Back to Login
+</button>
+
+</div>
+
+
+<!-- FORGOT PASSWORD PANEL -->
+
+<div id="forgotPanel" class="auth-panel" hidden>
+
+<div class="auth-logo">
+<img src="./images/logo2.png" alt="CareCliQ">
+</div>
+
+<h1>
+Forgot <span>Password</span>
+</h1>
+
+<p>
+Enter your email address and we will send you a secure reset link.
+</p>
+
+<form id="forgotForm">
+
+<div class="form-field">
+
+<input
+id="forgotEmail"
+type="email"
+required>
+
+<label>Email Address</label>
+
+</div>
+
+<button
+class="btn-action-pill"
+type="submit">
+Send Reset Link
+</button>
+
+</form>
+
+<button
+type="button"
+class="auth-back-button"
+data-show-panel="login">
+Back to Login
+</button>
+
+</div>
+
+
+<!-- RESET PASSWORD PANEL -->
+
+<div id="resetPanel" class="auth-panel" hidden>
+
+<div class="auth-logo">
+<img src="./images/logo2.png" alt="CareCliQ">
+</div>
+
+<h1>
+Reset <span>Password</span>
+</h1>
+
+<p>
+Create a new secure password for your CareCliQ account.
+</p>
+
+<form id="resetPasswordForm">
+
+<div class="form-field">
+
+<input
+id="resetPassword"
+type="password"
+required>
+
+<button
+type="button"
+class="password-toggle"
+data-target="resetPassword"
+aria-label="Show password">
+👁
+</button>
+
+<label>New Password</label>
+
+</div>
+
+<div class="form-field">
+
+<input
+id="resetConfirmPassword"
+type="password"
+required>
+
+<button
+type="button"
+class="password-toggle"
+data-target="resetConfirmPassword"
+aria-label="Show password">
+👁
+</button>
+
+<label>Confirm Password</label>
+
+</div>
+
+<button
+class="btn-action-pill"
+type="submit">
+Update Password
+</button>
+
+</form>
+
+<button
+type="button"
+class="auth-back-button"
+data-show-panel="login">
+Back to Login
+</button>
+
+</div>
+
+
+</section>
+
+</main>
+
+</div>
+
+</div>
+
+<script src="./frontend/js/auth-api.js"></script>
+<script src="./frontend/js/login.js"></script>
+
+</body>
+
+</html>
