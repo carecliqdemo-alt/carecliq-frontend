@@ -26,40 +26,40 @@
     </a>
 
     <button
-      class="mobile-menu-trigger"
-      aria-label="Toggle navigation menu"
-      aria-expanded="false"
-      aria-controls="headerNav"
-      id="menuTrigger"
-      type="button"
-    >
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-    </button>
+  class="mobile-menu-trigger"
+  aria-label="Toggle Navigation Menu"
+  aria-expanded="false"
+  aria-controls="headerNav"
+  id="menuTrigger"
+  type="button"
+>
+  <span class="hamburger-bar"></span>
+  <span class="hamburger-bar"></span>
+  <span class="hamburger-bar"></span>
+</button>
 
-    <nav
-      class="header-navigation-wrapper"
-      id="headerNav"
-      aria-label="Main navigation"
-    >
-      <div class="nav-links-center">
-        <a href="index.html#features">Features</a>
-        <a href="index.html#how-it-works">How it works</a>
-        <a href="index.html#languages">Languages</a>
-        <a href="contact.html">Contact</a>
-      </div>
+<nav
+  class="header-navigation-wrapper"
+  id="headerNav"
+  aria-label="Main navigation"
+>
+  <div class="nav-links-center">
+    <a href="index.html#features">Features</a>
+    <a href="index.html#how-it-works">How it works</a>
+    <a href="index.html#languages">Languages</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
-      <div class="nav-actions-right">
-        <a href="login.html" class="btn-login-link">
-          Login
-        </a>
+  <div class="nav-actions-right">
+    <a href="login.html" class="btn-login-link">
+      Login
+    </a>
 
-        <a href="book-demo.html" class="btn-action-pill">
-          Book Demo
-        </a>
-      </div>
-    </nav>
+    <a href="book-demo.html" class="btn-action-pill">
+      Book Demo
+    </a>
+  </div>
+</nav>
 
   </div>
 </header>
@@ -143,15 +143,48 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  menuTrigger.addEventListener("click", function () {
+  function closeMenu() {
+
+    headerNav.classList.remove("mobile-open");
+    menuTrigger.classList.remove("active");
+
+    menuTrigger.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  }
+
+  menuTrigger.addEventListener("click", function (event) {
+
+    event.stopPropagation();
 
     const isOpen =
       headerNav.classList.toggle("mobile-open");
+
+    menuTrigger.classList.toggle(
+      "active",
+      isOpen
+    );
 
     menuTrigger.setAttribute(
       "aria-expanded",
       String(isOpen)
     );
+
+  });
+
+  headerNav.addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
+
+  document.addEventListener("click", closeMenu);
+
+  window.addEventListener("resize", function () {
+
+    if (window.innerWidth > 1024) {
+      closeMenu();
+    }
 
   });
 

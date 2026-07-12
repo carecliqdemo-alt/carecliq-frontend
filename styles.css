@@ -3978,3 +3978,218 @@ audio {
         padding: 20px 16px;
     }
 }
+
+/* =====================================
+   INFORMATION PAGE HEADER FIX
+===================================== */
+
+.information-page .header-container {
+    position: relative;
+}
+
+.information-page .header-navigation-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.information-page .mobile-menu-trigger {
+    display: none;
+}
+
+
+/* MOBILE + TABLET */
+
+@media (max-width: 1024px) {
+
+    .information-page .carecliq-master-header {
+        position: relative;
+        z-index: 9999;
+    }
+
+    .information-page .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .information-page .mobile-menu-trigger {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        margin-left: auto;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        position: relative;
+        z-index: 10002;
+    }
+
+    .information-page .hamburger-bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #292524;
+        transition:
+            transform 0.25s ease,
+            opacity 0.25s ease;
+    }
+
+    .information-page .mobile-menu-trigger.active
+    .hamburger-bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .information-page .mobile-menu-trigger.active
+    .hamburger-bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .information-page .mobile-menu-trigger.active
+    .hamburger-bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .information-page .header-navigation-wrapper {
+        display: none !important;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 16px;
+        right: 16px;
+        width: auto;
+        margin: 0;
+        padding: 18px;
+        border: 1px solid rgba(41, 37, 36, 0.08);
+        border-radius: 18px;
+        background: #ffffff;
+        box-shadow: 0 20px 50px rgba(41, 37, 36, 0.16);
+        z-index: 10001;
+    }
+
+    .information-page
+    .header-navigation-wrapper.mobile-open {
+        display: block !important;
+    }
+
+    .information-page .nav-actions-right {
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .information-page .nav-actions-right a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 46px;
+        margin: 0;
+        text-align: center;
+    }
+}
+
+/* HOMEPAGE HEADER OVERLAP FIX ONLY */
+
+body:not(.information-page) #top {
+    padding-top: 150px !important;
+}
+
+@media (max-width: 1024px) {
+
+    body:not(.information-page) #top {
+        padding-top: 125px !important;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    body:not(.information-page) #top {
+        padding-top: 105px !important;
+    }
+
+}
+
+/* HOMEPAGE HERO HEADING SIZE FIX ONLY */
+
+body:not(.information-page) #top h1 {
+    max-width: 680px;
+    font-size: clamp(2.8rem, 5.5vw, 5.5rem) !important;
+    line-height: 1.02 !important;
+    overflow-wrap: normal;
+}
+
+body:not(.information-page) #top {
+    overflow: hidden;
+}
+
+body:not(.information-page) #top video {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+}
+
+body:not(.information-page) #top > div:first-child {
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 1024px) {
+
+    body:not(.information-page) #top h1 {
+        max-width: 620px;
+        font-size: clamp(2.7rem, 7vw, 4.6rem) !important;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    body:not(.information-page) #top h1 {
+        max-width: 100%;
+        font-size: clamp(2.35rem, 11vw, 3.7rem) !important;
+        line-height: 1.05 !important;
+    }
+
+}
+
+/* KEEP HEADER VISIBLE ON THE FOUR INFORMATION PAGES */
+
+.information-page .carecliq-master-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.information-page .information-main {
+    padding-top: 120px;
+}
+
+@media (max-width: 1024px) {
+
+    .information-page .information-main {
+        padding-top: 105px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .information-page .information-main {
+        padding-top: 92px;
+    }
+
+}
