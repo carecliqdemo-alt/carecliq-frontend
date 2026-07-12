@@ -11,12 +11,23 @@ function resolveMediaUrl(url) {
     return "";
   }
 
-  const cleanUrl =
+  let cleanUrl =
     String(url).trim();
 
 
+  // Convert old local development URLs
+  cleanUrl = cleanUrl.replace(
+    /^http:\/\/localhost:5500/,
+    ""
+  );
+
+  cleanUrl = cleanUrl.replace(
+    /^http:\/\/127\.0\.0\.1:5500/,
+    ""
+  );
+
+
   if (
-    cleanUrl.startsWith("http://") ||
     cleanUrl.startsWith("https://") ||
     cleanUrl.startsWith("blob:") ||
     cleanUrl.startsWith("data:")
@@ -1639,3 +1650,4 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 });
+

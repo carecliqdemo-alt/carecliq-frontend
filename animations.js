@@ -64,18 +64,44 @@ hero
     duration:.7
 },"-=.5")
 
-.from(".hero-buttons button",{
-    y:30,
-    opacity:0,
-    stagger:.12,
-    duration:.5
-},"-=.4")
+const heroButtons =
+    document.querySelectorAll(
+        ".hero-buttons button"
+    );
 
-.from("video",{
-    scale:.94,
-    opacity:0,
-    duration:1.3
-},"-=.8");
+const pageVideos =
+    document.querySelectorAll("video");
+
+
+if (heroButtons.length) {
+
+    hero.from(
+        heroButtons,
+        {
+            y: 30,
+            opacity: 0,
+            stagger: .12,
+            duration: .5
+        },
+        "-=.4"
+    );
+
+}
+
+
+if (pageVideos.length) {
+
+    hero.from(
+        pageVideos,
+        {
+            scale: .94,
+            opacity: 0,
+            duration: 1.3
+        },
+        "-=.8"
+    );
+
+}
 
 /* --------------------------
    GENERAL REVEALS
