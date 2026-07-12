@@ -163,31 +163,34 @@ function collectFeatures(){
 
 }
 
-function addFeature(){
+function addFeature() {
 
-    if(!websiteData.homepage.features){
+    if (!websiteData.homepage) {
+
+        websiteData.homepage = {};
+
+    }
+
+    if (!websiteData.homepage.features) {
 
         websiteData.homepage.features = [];
 
     }
 
-
     websiteData.homepage.features.push({
 
-        icon:"",
-        color:"pink",
-        title:"New Feature",
-        description:"",
-        badge:"",
-        video:""
+        icon: "",
+        color: "pink",
+        title: "New Feature",
+        description: "",
+        badge: "",
+        video: ""
 
     });
-
 
     loadFeatures();
 
 }
-
 
 window.addFeature = addFeature;
 
