@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Privacy Policy | CareCliQ</title>
+<title>Contact | CareCliQ</title>
 
 <link rel="stylesheet" href="styles.css">
 
@@ -12,29 +12,52 @@
 
 </head>
 
-<body>
+<body data-info-page="contact">
 
 <header class="carecliq-master-header">
   <div class="header-container">
-    
-   <a href="#" class="header-logo" aria-label="CareCliQ Home">
-    <img src="./images/logo2.png" alt="CareCliQ Logo" class="header-logo-img">
-</a>
-    <!-- Mobile Menu Hamburger Button Toggle Trigger -->
-    <button class="mobile-menu-trigger" aria-label="Toggle Navigation Menu" aria-expanded="false" id="menuTrigger">
+
+    <a href="index.html" class="header-logo" aria-label="CareCliQ Home">
+      <img
+        src="./images/logo2.png"
+        alt="CareCliQ Logo"
+        class="header-logo-img"
+      >
+    </a>
+
+    <button
+      class="mobile-menu-trigger"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="headerNav"
+      id="menuTrigger"
+      type="button"
+    >
       <span class="hamburger-bar"></span>
       <span class="hamburger-bar"></span>
       <span class="hamburger-bar"></span>
     </button>
-      
-      <div class="nav-actions-right">
-         <a href="login.html" class="btn-login-link">
-    Login
-  </a>
 
-  <a href="book-demo.html" class="btn-action-pill">
-    Book Demo
-  </a>
+    <nav
+      class="header-navigation-wrapper"
+      id="headerNav"
+      aria-label="Main navigation"
+    >
+      <div class="nav-links-center">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="index.html#languages">Languages</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-actions-right">
+        <a href="login.html" class="btn-login-link">
+          Login
+        </a>
+
+        <a href="book-demo.html" class="btn-action-pill">
+          Book Demo
+        </a>
       </div>
     </nav>
 
@@ -47,41 +70,17 @@
 <section class="info-hero">
 
 <h1>
-Contact
-<span>CareCliQ</span>
+    <span id="infoPageTitle"></span>
+    <span id="infoPageHighlight"></span>
 </h1>
 
-<p>
-Connect with our team for support, partnerships, and questions about our platform.
-</p>
+<p id="infoPageDescription"></p>
 
 </section>
 
-<section class="info-content">
-
-<h2>Contact CareCliQ</h2>
-
-<p>
-Have questions about our platform or services? Our team is ready to help.
-</p>
-
-
-<div class="contact-card">
-
-<p>
-Email:
-support@carecliq.com
-</p>
-
-
-<p>
-Australia
-</p>
-
-
-</div>
-
-
+<section
+    class="info-content"
+    id="infoPageContent">
 </section>
 
 </main>
@@ -120,6 +119,37 @@ Australia
 
   </div>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const menuTrigger =
+    document.getElementById("menuTrigger");
+
+  const headerNav =
+    document.getElementById("headerNav");
+
+  if (!menuTrigger || !headerNav) {
+    return;
+  }
+
+  menuTrigger.addEventListener("click", function () {
+
+    const isOpen =
+      headerNav.classList.toggle("mobile-open");
+
+    menuTrigger.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+
+  });
+
+});
+</script>
+
+<script src="config.js"></script>
+<script src="information-pages.js"></script>
 
 </body>
 </html>

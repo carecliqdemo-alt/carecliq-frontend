@@ -64,6 +64,8 @@ async function loadContent(){
 
         loadMedia();
 
+        loadInformationPages();
+
         loadSettings();
 
 const savedSection =
@@ -153,6 +155,8 @@ async function saveContent(){
         collectCTA();
 
         collectFooter();
+
+        collectInformationPages();
 
         collectSettings();
 

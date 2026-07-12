@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Privacy Policy | CareCliQ</title>
+<title>NDIS Compliance | CareCliQ</title>
 
 <link rel="stylesheet" href="styles.css">
 
@@ -12,29 +12,52 @@
 
 </head>
 
-<body>
+<body data-info-page="ndis">
 
 <header class="carecliq-master-header">
   <div class="header-container">
-    
-   <a href="#" class="header-logo" aria-label="CareCliQ Home">
-    <img src="./images/logo2.png" alt="CareCliQ Logo" class="header-logo-img">
-</a>
-    <!-- Mobile Menu Hamburger Button Toggle Trigger -->
-    <button class="mobile-menu-trigger" aria-label="Toggle Navigation Menu" aria-expanded="false" id="menuTrigger">
+
+    <a href="index.html" class="header-logo" aria-label="CareCliQ Home">
+      <img
+        src="./images/logo2.png"
+        alt="CareCliQ Logo"
+        class="header-logo-img"
+      >
+    </a>
+
+    <button
+      class="mobile-menu-trigger"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="headerNav"
+      id="menuTrigger"
+      type="button"
+    >
       <span class="hamburger-bar"></span>
       <span class="hamburger-bar"></span>
       <span class="hamburger-bar"></span>
     </button>
-      
+
+    <nav
+      class="header-navigation-wrapper"
+      id="headerNav"
+      aria-label="Main navigation"
+    >
+      <div class="nav-links-center">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="index.html#languages">Languages</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
       <div class="nav-actions-right">
         <a href="login.html" class="btn-login-link">
-    Login
-  </a>
+          Login
+        </a>
 
-  <a href="book-demo.html" class="btn-action-pill">
-    Book Demo
-  </a>
+        <a href="book-demo.html" class="btn-action-pill">
+          Book Demo
+        </a>
       </div>
     </nav>
 
@@ -43,43 +66,20 @@
 
 <main class="info-page">
 
-    <section class="info-hero">
+ <section class="info-hero">
 
 <h1>
-NDIS
-<span>Compliance</span>
+    <span id="infoPageTitle"></span>
+    <span id="infoPageHighlight"></span>
 </h1>
 
-<p>
-Supporting safe, transparent and accessible care experiences for every participant.
-</p>
+<p id="infoPageDescription"></p>
 
 </section>
 
-<section class="info-content">
-
-<h2>NDIS Compliance</h2>
-
-<p>
-CareCliQ is designed to support care providers with accessible,
-transparent and compliant communication workflows.
-</p>
-
-
-<h2>Participant Rights</h2>
-
-<p>
-We support dignity, choice and inclusion for every participant.
-</p>
-
-
-<h2>Quality Standards</h2>
-
-<p>
-Our platform aligns with principles of safe and effective care delivery.
-</p>
-
-
+<section
+    class="info-content"
+    id="infoPageContent">
 </section>
 
 </main>
@@ -118,6 +118,37 @@ Our platform aligns with principles of safe and effective care delivery.
 
   </div>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const menuTrigger =
+    document.getElementById("menuTrigger");
+
+  const headerNav =
+    document.getElementById("headerNav");
+
+  if (!menuTrigger || !headerNav) {
+    return;
+  }
+
+  menuTrigger.addEventListener("click", function () {
+
+    const isOpen =
+      headerNav.classList.toggle("mobile-open");
+
+    menuTrigger.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+
+  });
+
+});
+</script>
+
+<script src="config.js"></script>
+<script src="information-pages.js"></script>
 
 </body>
 </html>

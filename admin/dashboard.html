@@ -48,6 +48,10 @@ Roles
 Testimonials
 </button>
 
+<button data-section="informationPages">
+  Information Pages
+</button>
+
 <button data-section="demo-requests">
   Demo Requests
 </button>
@@ -168,7 +172,29 @@ Secondary Button
 </section>
 
 
+<section class="editor-section" id="informationPages">
 
+  <div class="editor-card">
+
+    <div class="editor-heading">
+      <div>
+        <h2>Information Pages</h2>
+        <p>Edit Privacy, Terms, NDIS and Contact page content.</p>
+      </div>
+
+      <select id="infoPageSelector">
+        <option value="privacy">Privacy Policy</option>
+        <option value="terms">Terms of Service</option>
+        <option value="ndis">NDIS Compliance</option>
+        <option value="contact">Contact</option>
+      </select>
+    </div>
+
+    <div id="informationPagesEditor"></div>
+
+  </div>
+
+</section>
 
 <!-- FEATURES -->
 
@@ -571,6 +597,8 @@ Copyright
 <script src="modules/media.js"></script>
 <script src="modules/settings.js"></script>
 <script src="modules/demoRequests.js"></script>
+<script src="modules/informationPages.js"></script>
 <script src="admin.js"></script>
+
 </body>
 </html>
