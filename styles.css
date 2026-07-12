@@ -3860,7 +3860,7 @@ audio {
    TABLET
 ===================================== */
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 1025px) and (max-width: 1024px) {
 
     .information-main {
         padding-top: 88px;
@@ -4192,4 +4192,64 @@ body:not(.information-page) #top > div:first-child {
         padding-top: 92px;
     }
 
+}
+
+/* FIX INFORMATION PAGE MENU ON ALL PHONE + TABLET SIZES */
+
+@media (max-width: 1024px) {
+
+    .information-page .carecliq-master-header {
+        overflow: visible !important;
+    }
+
+    .information-page .header-container {
+        position: relative;
+        overflow: visible !important;
+    }
+
+    .information-page .mobile-menu-trigger {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative;
+        z-index: 10002;
+    }
+
+    .information-page .header-navigation-wrapper {
+        display: none !important;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 16px;
+        right: 16px;
+        width: auto;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        z-index: 10001;
+    }
+
+    .information-page
+    .header-navigation-wrapper.mobile-open {
+        display: flex !important;
+        flex-direction: column;
+        gap: 18px;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .information-page .nav-links-center,
+    .information-page .nav-actions-right {
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .information-page .nav-links-center a,
+    .information-page .nav-actions-right a {
+        display: flex;
+        width: 100%;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+    }
 }
