@@ -12,7 +12,7 @@
 
 </head>
 
-<body data-info-page="ndis">
+<body class="information-page" data-info-page="ndis">
 
 <header class="carecliq-master-header">
   <div class="header-container">
@@ -64,23 +64,34 @@
   </div>
 </header>
 
-<main class="info-page">
+<main class="information-main">
 
- <section class="info-hero">
+  <section class="information-hero">
 
-<h1>
-    <span id="infoPageTitle"></span>
-    <span id="infoPageHighlight"></span>
-</h1>
+    <div class="information-container">
 
-<p id="infoPageDescription"></p>
+      <h1 class="information-title">
+        <span id="infoPageTitle"></span>
+        <span id="infoPageHighlight"></span>
+      </h1>
 
-</section>
+      <p
+        class="information-intro"
+        id="infoPageDescription"
+      ></p>
 
-<section
-    class="info-content"
-    id="infoPageContent">
-</section>
+    </div>
+
+  </section>
+
+  <section class="information-body">
+
+    <div
+      class="information-container information-content"
+      id="infoPageContent"
+    ></div>
+
+  </section>
 
 </main>
 
